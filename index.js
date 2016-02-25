@@ -26,7 +26,7 @@ function getTinyMCECursorPosition() {
    * are done
    * @type {string}
    */
-  var id = "######cursor######";
+  var id = "tx-cursor";
   var dummySpan = '<span id="' + id + '"></span>';
   editor.selection.setContent(dummySpan);
 
