@@ -6,7 +6,7 @@ function getTinyMCECursorPosition() {
   var editor = tinyMCE.activeEditor;
 
   /**
-   * bookmark the current cursor position it
+   * bookmark the current cursor position
    * @type {string|{name, index}|{start, end}|{rng}|{id}|*}
    */
   var bookmark = editor.selection.getBookmark(0);
