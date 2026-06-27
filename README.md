@@ -13,7 +13,7 @@ var position = getTinyMCECursorPosition();
 console.log('Cursor is at index:', position);
 ```
 
-The function returns the character index of the cursor in the editor's HTML content.
+Returns the character index of the cursor in the editor's HTML content.
 
 ## How it works
 
