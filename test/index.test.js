@@ -91,4 +91,18 @@ VERSIONS.forEach(function (pkg) {
 
     win.close();
   });
+
+  test(pkg + ": does not call deprecated TinyMCE APIs", async function () {
+    var win = loadWindow(pkg);
+    var editor = await initEditor(win);
+    var warnings = [];
+    win.console.warn = function (message) { warnings.push(String(message)); };
+
+    editor.setContent("<p>Hello world</p>");
+    placeCaret(editor, editor.getBody().querySelector("p").firstChild, 5);
+    win.getTinyMCECursorPosition();
+
+    assert.deepStrictEqual(warnings.filter(function (w) { return /deprecated/i.test(w); }), []);
+    win.close();
+  });
 });

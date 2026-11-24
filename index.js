@@ -15,10 +15,6 @@ function getTinyMCECursorPosition() {
   var bookmarkSelector = "[data-mce-type=bookmark]";
   var bookmarks = editor.dom.select(bookmarkSelector);
 
-  /** select the first bookmark as its where the cursor is */
-  editor.selection.select(bookmarks[0]);
-  editor.selection.collapse();
-
   /**
    * create a dummy span element with a dummy id
    * remember the id it will be important later,
@@ -28,7 +24,12 @@ function getTinyMCECursorPosition() {
    */
   var id = "nt-tmce-bm-cursor";
   var dummySpan = '<span id="' + id + '"></span>';
-  editor.selection.setContent(dummySpan);
+
+  /**
+   * put the dummy span right after the first bookmark as its where the cursor is.
+   * plain DOM insertion: selection.setContent is deprecated in TinyMCE 8
+   */
+  editor.dom.insertAfter(editor.dom.create("span", {id: id}), bookmarks[0]);
 
   /** get html of the editor */
   var content = editor.getContent({format: "html"});
