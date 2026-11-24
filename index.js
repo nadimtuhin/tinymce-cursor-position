@@ -5,6 +5,11 @@ function getTinyMCECursorPosition() {
    */
   var editor = tinyMCE.activeEditor;
 
+  /** no editor yet (not initialised or already removed), so no cursor */
+  if (!editor) {
+    return -1;
+  }
+
   /**
    * bookmark the current cursor position
    * @type {string|{name, index}|{start, end}|{rng}|{id}|*}

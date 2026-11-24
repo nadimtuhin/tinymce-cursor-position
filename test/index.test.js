@@ -51,6 +51,12 @@ function placeCaret(editor, node, offset) {
 }
 
 VERSIONS.forEach(function (pkg) {
+  test(pkg + ": returns -1 when no editor is active", async function () {
+    var win = loadWindow(pkg);
+    assert.strictEqual(win.getTinyMCECursorPosition(), -1);
+    win.close();
+  });
+
   test(pkg + ": returns the cursor index in the editor HTML", async function () {
     var win = loadWindow(pkg);
     var editor = await initEditor(win);
