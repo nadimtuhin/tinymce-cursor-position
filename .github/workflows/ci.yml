@@ -16,3 +16,5 @@ jobs:
           node-version: '20'
       - name: Check syntax
         run: node --check index.js
+      - run: npm ci
+      - run: npm test

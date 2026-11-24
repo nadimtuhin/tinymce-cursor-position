@@ -13,7 +13,7 @@ var position = getTinyMCECursorPosition();
 console.log('Cursor is at index:', position);
 ```
 
-Returns the character index of the cursor in the editor's HTML content.
+Returns the character index of the cursor in the editor's HTML content, or `-1` when no editor is active.
 
 ## How it works
 
@@ -24,7 +24,7 @@ Returns the character index of the cursor in the editor's HTML content.
 
 ## Requirements
 
-- TinyMCE (any version that exposes `tinyMCE.activeEditor`)
+- TinyMCE (any version that exposes `tinyMCE.activeEditor`; tested on 4 to 8 with `npm test`)
 
 ## License
 
